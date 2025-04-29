@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ChatGPT Clone - Dark Mode</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="top-bar">
+    <button id="newChat" onclick="startNewChat()">+ New Chat</button>
+  </div>
+
+  <div class="chat-wrapper">
+    <div class="chat-box" id="chatBox"></div>
+    <form id="chatForm" autocomplete="off">
+      <input type="text" id="userInput" placeholder="Send a message..." />
+      <button type="submit">➤</button>
+    </form>
+    <div class="loader" id="loader"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
