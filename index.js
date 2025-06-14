@@ -29,8 +29,8 @@ app.post('/askQues', async (req, res) => {
     try {
 
       const { ques ,sessionId } = req.body;
-      console.log(req.body)
-      console.log("session id", sessionId);
+      // console.log(req.body)
+      // console.log("session id", sessionId);
 
      if(!sessionId){
         console.log('session id missing')

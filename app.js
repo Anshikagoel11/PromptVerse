@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const typingIndicator = document.getElementById('typingIndicator');
   const fontSizeValue = document.getElementById('fontSizeValue');
 
-  // State
+
   let currentSessionId = getOrCreateSessionId();
   let isProcessing = false;
 
@@ -30,15 +30,14 @@ document.addEventListener('DOMContentLoaded', function () {
   function init() {
     loadSettings();
     setupEventListeners();
-    initializeChatInterface(); // Changed from showWelcomeScreen()
+    initializeChatInterface(); 
     userInput.focus();
   }
 
   function initializeChatInterface() {
-    // Always show chat interface ready for messages
     welcomeScreen.style.display = 'none';
     chatBox.style.display = 'flex';
-    chatBox.innerHTML = ''; // Start with empty chat
+    chatBox.innerHTML = ''; 
   }
 
   function getOrCreateSessionId() {
@@ -79,8 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         body: JSON.stringify({
           ques: message,
-          sessionId: currentSessionId,
-          model: modelSelect.value
+          sessionId: currentSessionId
         })
       });
 
@@ -88,7 +86,10 @@ document.addEventListener('DOMContentLoaded', function () {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const data = await response.text();
+      const tempData = await response.text();
+const data = tempData.replace(/\*/g, '');
+
+      
       addMessageToChat('assistant', data);
     } catch (error) {
       console.error('Error:', error);
