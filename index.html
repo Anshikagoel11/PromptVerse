@@ -1,23 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ChatGPT Clone - Dark Mode</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PromptVerse - AI Chat Interface">
+  <title>PromptVerse - AI Chat Interface</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="top-bar">
-    <button id="newChat" onclick="startNewChat()">+ New Chat</button>
+  <div class="app">
+    <div class="sidebar">
+      <button id="newChat" class="sidebar-btn">+ New Chat</button>
+      <div class="quick-prompt">What's AI?</div>
+      <div class="quick-prompt">Suggest a project</div>
+      <div class="quick-prompt">Explain recursion</div>
+      <button id="settingsBtn" class="sidebar-btn">⚙️ Settings</button>
+    </div>
+
+    <div class="chat-container">
+      <div class="mobile-header">
+        <button id="mobileMenuToggle" aria-label="Toggle menu">☰</button>
+        <h1>PromptVerse</h1>
+      </div>
+
+      <div id="welcomeScreen" class="welcome-screen">
+        <h2>Welcome to PromptVerse</h2>
+        <p>Select a prompt or start chatting!</p>
+      </div>
+
+      <div id="chatBox" class="chat-box"></div>
+      <div id="typingIndicator" class="typing-indicator"></div>
+      <div id="loader" class="loader">Loading...</div>
+
+      <form id="chatForm" class="chat-form">
+        <input 
+          id="userInput" 
+          type="text" 
+          placeholder="Ask something..." 
+          autocomplete="off"
+          aria-label="Chat input"
+        >
+        <select id="modelSelect" aria-label="Select AI model">
+          <option value="gpt-3.5">GPT-3.5</option>
+          <option value="gpt-4">GPT-4</option>
+        </select>
+        <button type="submit" aria-label="Send message">Send</button>
+      </form>
+    </div>
   </div>
 
-  <div class="chat-wrapper">
-    <div class="chat-box" id="chatBox"></div>
-    <form id="chatForm" autocomplete="off">
-      <input type="text" id="userInput" placeholder="Send a message..." />
-      <button type="submit">➤</button>
-    </form>
-    <div class="loader" id="loader"></div>
+  <!-- Settings Modal -->
+  <div id="settingsModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" aria-label="Close settings">&times;</span>
+      <h2>Settings</h2>
+      
+      <label for="themeSelect">Theme:</label>
+      <select id="themeSelect">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+
+      <label for="fontSize">Font Size: <span id="fontSizeValue">15</span>px</label>
+      <input type="range" id="fontSize" min="12" max="24" value="15">
+
+      <label class="checkbox-label">
+        <input type="checkbox" id="typingToggle">
+        Show Typing Indicator
+      </label>
+
+      <button class="save-settings">Save Settings</button>
+    </div>
   </div>
 
   <script src="app.js"></script>
