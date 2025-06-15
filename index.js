@@ -30,7 +30,7 @@ app.post('/askQues', async (req, res) => {
 
       const { ques ,sessionId } = req.body;
       // console.log(req.body)
-      // console.log("session id", sessionId);
+      console.log("session id:", sessionId);
 
      if(!sessionId){
         console.log('session id missing')
